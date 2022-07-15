@@ -29,3 +29,5 @@ const workoutSchema = new Schema(
 //Schema defines the structure of a document in a db, what model does it apply the schema to a particular model and then we use this model to interact with collections of that name
 
 module.exports = mongoose.model("Workout", workoutSchema);
+
+//here this automatically creates a collection for us based on this name (Workout) and pluralizes this and builds that collection in the db for us
