@@ -21,7 +21,7 @@ const getWorkout = async (req, res) => {
 
   // using return here as we want to stop the execution here if workout is empty, return keyword helps stop the execution and won't execute rest of the code below (res.status(200).json(workout))
   if (!workout) {
-    return res.status(404).json({ error: error.message });
+    return res.status(404).json({ error: "No such workout" });
   }
 
   res.status(200).json(workout);
@@ -42,12 +42,44 @@ const createWorkout = async (req, res) => {
 };
 
 //delete by id
+const deleteWorkout = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: error.message });
+  }
+
+  const workout = await Workout.findOneAndDelete({ _id: id });
+
+  if (!workout) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  res.status(200).json(workout);
+};
 
 //update by id
+const updateWorkout = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  const workout = await Workout.findOneAndUpdate({ _id: id }, { ...req.body });
+
+  if (!workout) {
+    return res.json(404).json({ error: "No such workout" });
+  }
+
+  res.status(200).json(workout);
+};
 
 //to export all this to workout.js(router file)
 module.exports = {
   createWorkout,
   getWorkouts,
   getWorkout,
+  deleteWorkout,
+  updateWorkout,
 };
