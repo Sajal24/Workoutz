@@ -1,7 +1,7 @@
 const Workout = require("../models/workoutModel");
 
 //get all
-
+const getWorkout = async (req, res) => {};
 //get by id
 
 //post by id
