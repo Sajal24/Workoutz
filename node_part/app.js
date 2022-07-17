@@ -6,8 +6,8 @@ const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workout");
 
 //for post request, MIDDLEWARE
-//what it does is if any req comes and it have some data/body attached to it, then it passes it and attachs it to teh request object so that we can access it in the request handler
-//express.json() is a built in middleware function, it parses incoming JSON requests and puts the parsed data in req.body.S
+//what it does is if any req comes and it have some data/body attached to it, then it passes it and attachs it to the request object so that we can access it in the request handler
+//express.json() is a built in middleware function, it parses incoming JSON requests and puts the parsed data in req.body
 app.use(express.json());
 
 //middleware - fancy name for any code that executes between us getting a request on the server and sending the response to the server

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//we need mongoose to make schemas and model and structurize our documentl, so that we make sure the data that we get is well structurized, mongodb alonse is schemaless
+//we need mongoose to make schemas and model and structurize our document, so that we make sure the data that we get is well structurized, mongodb alone is schemaless
 
 const Schema = mongoose.Schema;
 
@@ -13,11 +13,12 @@ const workoutSchema = new Schema(
       required: true,
     },
 
-    reps: {
+    load: {
       type: Number,
       required: true,
     },
-    load: {
+
+    reps: {
       type: Number,
       required: true,
     },
@@ -27,6 +28,7 @@ const workoutSchema = new Schema(
 
 //Now we have to make a model based on this Schema
 //Schema defines the structure of a document in a db, what model does it apply the schema to a particular model and then we use this model to interact with collections of that name
+//collection - table, document - rows
 
 module.exports = mongoose.model("Workout", workoutSchema);
 
