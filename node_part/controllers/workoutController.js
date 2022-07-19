@@ -14,7 +14,7 @@ const getWorkout = async (req, res) => {
 
   //to check that the id we enter should be valid (must be a string of 12bytes or 24hex characters)
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: error.message });
+    return res.status(404).json({ error: "No such workout" });
   }
 
   const workout = await Workout.findById(id);
@@ -67,6 +67,7 @@ const updateWorkout = async (req, res) => {
   }
 
   const workout = await Workout.findOneAndUpdate({ _id: id }, { ...req.body });
+  //"..." -> spread / rest operator, allows an expression to be expanded in places where multiple arguments are expected. The rest parameter syntax is used for functions with a variable number of arguments.
 
   if (!workout) {
     return res.json(404).json({ error: "No such workout" });

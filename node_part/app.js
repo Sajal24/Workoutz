@@ -29,5 +29,5 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-//mongoose adds an extra layer of structure that mongodb alone doesn't give us, plus it also allows us to make models and schemes and hence structureizes everything
+//mongoose adds an extra layer of structure that mongodb alone doesn't give us, plus it also allows us to make models and schemes and hence structurizes everything
 //we will connect to the database inside app.js with mongoose only
